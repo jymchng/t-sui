@@ -1,0 +1,30 @@
+[package]
+name = "sui-framework"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mysten Labs <eng@mystenlabs.com>"]
+description = "Move framework for sui platform"
+license = "Apache-2.0"
+publish = false
+
+[dependencies]
+bcs = "0.1.4"
+serde = { version = "1.0.144", features = ["derive"] }
+once_cell = "1.16"
+tracing = "0.1.36"
+
+sui-types = { path = "../sui-types" }
+
+move-binary-format.workspace = true
+move-core-types.workspace = true
+
+workspace-hack = { version = "0.1", path = "../workspace-hack" }
+
+[build-dependencies]
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+bcs = "0.1.4"
+
+sui-move-build = { path = "../sui-move-build" }
+
+move-binary-format.workspace = true
+move-package.workspace = true

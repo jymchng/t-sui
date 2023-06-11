@@ -1,0 +1,10 @@
+[package]
+name = "t-sui"
+version = "0.0.1"
+
+[dependencies]
+Sui = { local = "../sui-framework/packages/sui-framework" }
+std = { local = "../sui-framework/packages/move-stdlib" }
+
+[addresses]
+t-sui = "0x0"
