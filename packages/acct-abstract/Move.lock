@@ -7,6 +7,7 @@ dependencies = [
   { name = "MoveStdlib" },
   { name = "Movemate" },
   { name = "Sui" },
+  { name = "Telegram" },
 ]
 
 [[move.package]]
@@ -28,4 +29,14 @@ source = { local = "..\\sui-framework\\packages\\sui-framework" }
 
 dependencies = [
   { name = "MoveStdlib" },
+]
+
+[[move.package]]
+name = "Telegram"
+source = { local = "..\\telegram" }
+
+dependencies = [
+  { name = "MoveStdlib" },
+  { name = "Movemate" },
+  { name = "Sui" },
 ]

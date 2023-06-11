@@ -1,13 +1,14 @@
 [package]
-name = "Telegram"
+name = "AccountAbstraction"
 version = "0.0.1"
 
 [dependencies]
 Sui = { local = "../sui-framework/packages/sui-framework" }
 MoveStdlib = { local = "../sui-framework/packages/move-stdlib" }
 Movemate = { local = "../movemate" }
+Telegram = { local = "../telegram" }
 
 [addresses]
-telegram = "75a8f57ec053991c9a1fea7047c170bd8d8bb6e24c8a2688014c55fda2e17a07"
-sui =  "0x2"
+acct_abstract = "0x7b5e6c0c4d6ad17dbc87f8b2b3026969567ceb3641215eca0bba35e5bf15739e"
 movemate = "0x7a5fd49ad5d7e7b8e4611a3876d73a55868a4ad9"
+telegram = "75a8f57ec053991c9a1fea7047c170bd8d8bb6e24c8a2688014c55fda2e17a07"

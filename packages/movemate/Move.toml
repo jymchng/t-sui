@@ -1,0 +1,11 @@
+[package]
+name = "Movemate"
+version = "1.7.0"
+authors = ["David Lucid <david@pentagon.xyz>"]
+
+[addresses]
+movemate = "0x7a5fd49ad5d7e7b8e4611a3876d73a55868a4ad9"
+
+[dependencies]
+Sui = { local = "../sui-framework/packages/sui-framework" }
+MoveStdlib = { local = "../sui-framework/packages/move-stdlib" }
