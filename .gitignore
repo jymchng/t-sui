@@ -1,1 +1,4 @@
-packages/telegram/build/t-sui/*
+sui.log.*
+build
+.idea
+.lock
