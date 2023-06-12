@@ -10,6 +10,7 @@ module acct_abstract::registry {
     use sui::event;
     use sui::linked_table::{Self, LinkedTable};
 
+    // Limit visibility only to the `interface` module, prevents other modules from manipulating the registry
     friend acct_abstract::interface;
 
     struct AccountRegistry has key {

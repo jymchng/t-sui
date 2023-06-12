@@ -46,7 +46,7 @@ module acct_abstract::interface {
     // Public Constructor
 
     /// Public constructor for creating new `Account`
-    public entry fun new_account(handle: String, tg_id: u64, acct_reg: &AccountRegistry, ctx: &mut TxContext) {
+    public entry fun new_account(handle: String, tg_id: u64, acct_reg: &mut AccountRegistry, ctx: &mut TxContext) {
         // Create new `TelegramID`
         let tg_id = telegram_id::new(i64_type::from(tg_id));
         // Create new `Handle` iff `handle: String` is not empty, i.e. there is a handle associated to the Telegram Account
@@ -59,9 +59,13 @@ module acct_abstract::interface {
         let acct = account::new(handle, tg_id, ctx);
         // Get the `UID` (global SUI ObjectID) of the `Account`
         let acct_id = account::id(&acct);
+        // Get `sender` of this transaction
+        let sender = tx_context::sender(ctx);
+        // Add new address-account pairing
+        registry::push_back(acct_reg, sender, acct_id);
         // Emit event of `Account` creation
         event::emit(EventCreated<AccountOTW> { id: acct_id });
         // Transfer this `Account` to the caller of this public entry function
-        transfer::public_transfer(acct, tx_context::sender(ctx));
+        transfer::public_transfer(acct, sender);
     }
 }
