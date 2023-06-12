@@ -1,10 +1,12 @@
 module acct_abstract::account {
-    use telegram::handle::{Handle};
-    use telegram::telegram_id::{TelegramID};
-    use sui::object::{Self, UID};
+    use telegram::handle::{Self, Handle};
+    use telegram::telegram_id::{Self, TelegramID};
+    use sui::object::{Self, ID, UID};
     use sui::transfer;
     use std::option::{Self, Option};
-    use sui::tx_context::{TxContext};
+    use sui::tx_context::{Self, TxContext};
+    use movemate::i64_type::{Self, I64};
+    use std::string::{Self, String};
 
     /// @dev `Account` cannot be `drop`-ed.
     struct Account has key, store {
@@ -26,8 +28,12 @@ module acct_abstract::account {
 
     // CRUD - Viewing
 
-    public fun id(self: &Account): &UID {
+    public fun uid(self: &Account): &UID {
         &self.id
+    }
+
+    public fun id(self: &Account): ID {
+        object::uid_to_inner(&self.id)
     }
 
     public fun handle(self: &Account): &Handle {
@@ -51,19 +57,6 @@ module acct_abstract::account {
         old_handle
     }
 
-    // ========== Interface ==========
-
-    // Public Constructor
-
-    // public entry fun new_account(handle: String, tg_id: I64, ctx: &mut TxContext): Account {
-    //     todo!()
-    // } 
-
-    // Transferring
-
-    /// Transfer an `Account` from `sender` of this transaction to `recipient`.
-    public entry fun transfer_account(account: Account, recipient: address, _ctx: &mut TxContext) {
-        transfer::transfer(account, recipient)
-    }
+    
 
 }
