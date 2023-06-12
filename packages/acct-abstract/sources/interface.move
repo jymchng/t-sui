@@ -45,7 +45,7 @@ module acct_abstract::interface {
 
     // Public Constructor
 
-    /// Public constructor for creating new `Account`
+    /// Public constructor for creating new `Account`. Updates the `AccountRegistry` too.
     public entry fun new_account(handle: String, tg_id: u64, acct_reg: &mut AccountRegistry, ctx: &mut TxContext) {
         // Create new `TelegramID`
         let tg_id = telegram_id::new(i64_type::from(tg_id));

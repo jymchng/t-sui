@@ -10,6 +10,7 @@ This repo is an implementation of account abstraction on the SUI blockchain via 
 |:---:|:---:|
 |Construction of basic structs `Handle`, `TelegramID` and `Account`|![](https://img.shields.io/badge/Completed-Green)|
 |Handle `Publisher`, `Display` and even `Kiosk` structs for `Account` as NFTs|![](https://img.shields.io/badge/Uncompleted-red)|
+|Public entry functions for the creation and transfer of `Account`|![](https://img.shields.io/badge/Completed-Green)|
 
 # Get Started
 

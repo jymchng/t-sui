@@ -13,6 +13,8 @@ module acct_abstract::registry {
     // Limit visibility only to the `interface` module, prevents other modules from manipulating the registry
     friend acct_abstract::interface;
 
+    // Only key ability so that it has a global unique ID (UID) and it manages/wraps a `LinkedTable<address, ID>` where `address` is the address of the owner of `Account` and
+    // `ID` is the UID of the owner of `Account`
     struct AccountRegistry has key {
         id: UID,
         table: LinkedTable<address, ID>
