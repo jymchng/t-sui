@@ -1,6 +1,6 @@
 module acct_abstract::registry {
-    use telegram::handle::{Self, Handle};
-    use telegram::telegram_id::{Self, TelegramID};
+    use telegram::handle::{Self, TelegramHandle};
+    use telegram::id::{Self, TelegramID};
     use sui::object::{Self, UID, ID};
     use sui::transfer;
     use std::option::{Self, Option};
@@ -22,6 +22,7 @@ module acct_abstract::registry {
 
     // CRUD - only usable to the `interface` module
 
+    /// Checks if `AccountRegistry` contains a particular `address`. Returns `bool`.
     public(friend) fun contains(self: &AccountRegistry, k: address): bool {
         linked_table::contains(&self.table, k)
     }

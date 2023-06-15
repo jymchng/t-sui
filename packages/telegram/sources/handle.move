@@ -1,30 +1,32 @@
 module telegram::handle {
     use std::string::{Self, String};
 
-    const EHandleInvalidLength: u64 = 0;
+    const ETelegramHandleInvalidLength: u64 = 0;
 
     /// @dev `TelegramID` does not have `key` and `copy`
-    struct Handle has store, drop {
+    struct TelegramHandle has store, drop {
         inner: String,
     }
 
-    public fun new(handle: String): Handle {
-        assert!(string::length(&handle) > 4, EHandleInvalidLength);
-        Handle {
+    public fun new(handle: String): TelegramHandle {
+        assert!(string::length(&handle) > 4, ETelegramHandleInvalidLength);
+        TelegramHandle {
             inner: handle
         }
     }
 
-    public fun borrow(self: &Handle): &String {
+    /// Borrow the inner String of TelegramHandle
+    public fun borrow(self: &TelegramHandle): &String {
         &self.inner
     }
 
-    public fun mutate(self: &mut Handle, new_value: String) {
-        assert!(string::length(&new_value) > 4, EHandleInvalidLength);
+    /// Mutate the inner String of TelegramHandle
+    public fun mutate(self: &mut TelegramHandle, new_value: String) {
+        assert!(string::length(&new_value) > 4, ETelegramHandleInvalidLength);
         self.inner = new_value
     }
 
-    // public fun is_equal(self: &Handle, other: &Handle): bool {
+    // public fun is_equal(self: &TelegramHandle, other: &TelegramHandle): bool {
     //     if (string::length(&self.inner) != string::length(&other.inner)) {
     //         return false
     //     };
@@ -42,7 +44,7 @@ module telegram::handle {
     //     return true
     // }
 
-    public fun is_equal(self: &Handle, other: &Handle): bool {
+    public fun is_equal(self: &TelegramHandle, other: &TelegramHandle): bool {
         &self.inner == &other.inner
     }
 
